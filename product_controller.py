@@ -39,3 +39,25 @@ class ProductController:
         return True, ""
     # endregion
 
+    # region SAVE
+    @staticmethod
+    def save(id, product, brand, number_of_product, expire_date, price):
+
+        valid, message = ProductController.is_valid_product(
+                product, brand, number_of_product, expire_date, price
+            )
+        if not valid:
+            return False, message
+
+        total_price = int(number_of_product) * float(price)
+
+        try:
+            product_obj = Product(id, product, brand, number_of_product, expire_date, price, total_price)
+            dao = ProductDataAccess()
+            dao.save(product_obj)
+            return True, "Product saved successfully"
+        except Exception as e:
+            return False, f"Failed to save product: {e}"
+    # endregion
+
+
