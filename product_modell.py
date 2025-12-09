@@ -1,4 +1,5 @@
 class Product:
+
     def __init__(self, id, product, brand, number_of_product, expire_date, price, total_price):
         self.id = id
         self.product = product
