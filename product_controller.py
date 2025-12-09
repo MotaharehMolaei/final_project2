@@ -1,4 +1,6 @@
 import re
+from product_modell import Product
+from product_dao import ProductDataAccess
 from datetime import datetime
 
 
@@ -59,5 +61,50 @@ class ProductController:
         except Exception as e:
             return False, f"Failed to save product: {e}"
     # endregion
+
+# region EDIT
+    @staticmethod
+    def edit(id, product, brand, number_of_product, expire_date, price):
+
+        valid, message = ProductController.is_valid_product(
+            product, brand, number_of_product, expire_date, price
+        )
+        if not valid:
+            return False, message
+
+        total_price = int(number_of_product) * float(price)
+
+        try:
+            product_obj = Product(id, product, brand, number_of_product, expire_date, price, total_price)
+            dao = ProductDataAccess()
+            dao.edit(product_obj)
+            return True, "Product edited successfully"
+        except Exception as e:
+            return False, f"Failed to edit product: {e}"
+    # endregion
+
+    # region REMOVE
+    @staticmethod
+    def remove(id):
+        try:
+            dao = ProductDataAccess()
+            dao.remove(id)
+            return True, "Product removed successfully"
+        except Exception as e:
+            return False, f"Failed to remove product: {e}"
+    # endregion
+
+    # region FIND
+    @staticmethod
+    def find_all():
+        try:
+            dao = ProductDataAccess()
+            products = dao.find_all()
+            return True, products
+        except Exception as e:
+            return False, f"Failed to find products: {e}"
+    # endregion
+
+
 
 
