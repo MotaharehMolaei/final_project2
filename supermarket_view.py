@@ -173,5 +173,6 @@ final_total_label.place(x=20, y=40)
 final_total_label.place(x=350, y=450)
 # endregion
 
+
 reset()
 window.mainloop()
