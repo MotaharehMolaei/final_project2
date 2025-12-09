@@ -17,6 +17,7 @@ def reset():
     for row in table.get_children():
         table.delete(row)
 
+    # Insert products, calculate the total price and find the highest ID to make it automatically
     final_total_value = 0
     max_id = 0
 
@@ -31,6 +32,7 @@ def reset():
     id.set(max_id + 1)
     final_total_label.config(text=f"Total Price: {final_total_value} $")
 
+
 # region select product
 def select_product(event):
     p = table.item(table.focus())["values"]
@@ -43,6 +45,7 @@ def select_product(event):
         price.set(p[5])
         total_price.set(p[6])
 # endregion
+
 
 # region save click
 def save_click():
@@ -62,6 +65,7 @@ def save_click():
         messagebox.showerror("Error", message)
 # endregion
 
+
 # region edit click
 def edit_click():
     status, message = ProductController.edit(
@@ -80,6 +84,7 @@ def edit_click():
         messagebox.showerror("Error", message)
 # endregion
 
+
 # region remove click
 def remove_click():
     status, message = ProductController.remove(id.get())
@@ -91,9 +96,10 @@ def remove_click():
         messagebox.showerror("Error", message)
 # endregion
 
-# GUI
+
+# ------------------------------------GUI--------------------------------------
 window = Tk()
-window.geometry("1200x500")
+window.geometry("1100x500")
 window.title("Supermarket Product Management")
 
 # region labels
@@ -117,6 +123,7 @@ total_price = StringVar()
 # endregion
 
 # region Entry
+# make the state of ID and TOTAL PRICe in readonly
 Entry(window, textvariable=id, state="readonly").place(x=130, y=20)
 Entry(window, textvariable=product).place(x=130, y=60)
 Entry(window, textvariable=brand).place(x=130, y=100)
