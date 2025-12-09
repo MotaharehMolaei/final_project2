@@ -32,11 +32,11 @@ class ProductController:
         try:
             date_obj = datetime.strptime(expire_date, "%Y-%m-%d")
         except ValueError:
-            raise NameError("Invalid Enroll Date (YYYY-MM-DD)")
+            raise NameError("Invalid EXPIRE DATE (YYYY-MM-DD)")
 
         today = datetime.now().date()
         if date_obj.date() < today:
-            raise NameError("Enroll Date cannot be in the past")
+            raise NameError("EXIPRE DATE cannot be in the past")
 
         return True, ""
     # endregion
