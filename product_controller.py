@@ -5,6 +5,7 @@ from datetime import datetime
 
 
 class ProductController:
+
     # region VALIDATION
     @staticmethod
     def is_valid_product(product, brand, number_of_product, expire_date, price):
