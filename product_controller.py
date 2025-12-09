@@ -8,13 +8,15 @@ class ProductController:
     # region VALIDATION
     @staticmethod
     def is_valid_product(product, brand, number_of_product, expire_date, price):
-
+        # product validation
         if not re.match(r"^[a-zA-Z0-9\s]{2,40}$", product):
             raise NameError("Invalid Product Name")
 
+        # brand validation
         if not re.match(r"^[a-zA-Z0-9\s]{2,40}$", brand):
             raise NameError("Invalid Brand Name")
 
+        # number of product validation
         try:
             number = int(number_of_product)
             if number <= 0:
@@ -22,6 +24,7 @@ class ProductController:
         except:
             raise NameError("Invalid Number of Product")
 
+        # price validation
         try:
             price_value = float(price)
             if price_value <= 0:
@@ -29,6 +32,7 @@ class ProductController:
         except:
             raise NameError("Invalid Price")
 
+        # expire date validation
         try:
             date_obj = datetime.strptime(expire_date, "%Y-%m-%d")
         except ValueError:
@@ -44,13 +48,13 @@ class ProductController:
     # region SAVE
     @staticmethod
     def save(id, product, brand, number_of_product, expire_date, price):
-
         valid, message = ProductController.is_valid_product(
                 product, brand, number_of_product, expire_date, price
             )
         if not valid:
             return False, message
 
+        # calculate of the total price for save
         total_price = int(number_of_product) * float(price)
 
         try:
@@ -72,6 +76,7 @@ class ProductController:
         if not valid:
             return False, message
 
+        # calculate the total price for edit the product
         total_price = int(number_of_product) * float(price)
 
         try:
