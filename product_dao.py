@@ -21,6 +21,7 @@ with sqlite3.connect("supermarket_db") as connection:
 print("Supermarket database and table created successfully.")
 
 
+
 class ProductDataAccess:
     def save(self, product):
         with sqlite3.connect("supermarket_db") as connection:
