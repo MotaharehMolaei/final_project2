@@ -142,7 +142,7 @@ Button(window, text="Remove", width=18, command=remove_click).place(x=50, y=390)
 # region table
 table = ttk.Treeview(
     window,
-    height=18,
+    height=21,
     columns=["ID", "Product", "Brand", "Number", "Expire Date", "Price", "Total Price"],
     show="headings"
 )
@@ -168,7 +168,8 @@ table.bind("<<TreeviewSelect>>", select_product)
 # endregion
 
 # region total label
-final_total_label = Label(window, text="Total price: 0 $", font=("Arial", 14, "bold"))
+final_total_label = Label(window, text="Total price: 0 $", font=("Arial", 14, "bold"), fg="blue")
+final_total_label.place(x=20, y=40)
 final_total_label.place(x=350, y=450)
 # endregion
 
