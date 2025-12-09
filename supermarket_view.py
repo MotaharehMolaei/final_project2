@@ -147,13 +147,13 @@ table = ttk.Treeview(
     show="headings"
 )
 
-table.column("ID", width=50)
-table.column("Product", width=120)
-table.column("Brand", width=120)
-table.column("Number", width=100)
-table.column("Expire Date", width=120)
-table.column("Price", width=100)
-table.column("Total Price", width=120)
+table.column("ID", width=50, anchor=CENTER)
+table.column("Product", width=120,anchor=CENTER)
+table.column("Brand", width=120, anchor=CENTER)
+table.column("Number", width=100, anchor=CENTER)
+table.column("Expire Date", width=120, anchor=CENTER)
+table.column("Price", width=100, anchor=CENTER)
+table.column("Total Price", width=120, anchor=CENTER)
 
 table.heading("ID", text="ID")
 table.heading("Product", text="Product")
